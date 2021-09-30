@@ -1,6 +1,7 @@
 const Book = require('../models/Book')
+const asyncErrorWrapper = require('express-async-handler')
 
-const addBook = async(req,res) => {
+const addBook = asyncErrorWrapper (async(req,res) => {
     const info = req.body;
 
     const bookList = await Book.create({
@@ -10,7 +11,7 @@ const addBook = async(req,res) => {
         success: true,
         data: bookList
     })
-}
+})
 
 const deleteBook = async (req,res) => {
     const { id } = req.params;

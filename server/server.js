@@ -3,6 +3,7 @@ const cors = require('cors');
 const express = require('express');
 const routers = require('./routes/index')
 const connectDatabase = require("./helpers/database/connectDatabase")
+const customErrorHandler = require('./middlewares/errors/customErrorHandler')
 
 // parse env variables
 require('dotenv').config();
@@ -26,6 +27,9 @@ app.use(express.static(__dirname + '/views/'));
 
 // Defining route middleware
 app.use('/api', routers);
+
+//Error Handler is a middleware
+app.use(customErrorHandler)
 
 // Listening to port
 app.listen(PORT, () => {
