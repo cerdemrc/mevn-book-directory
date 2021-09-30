@@ -1,0 +1,8 @@
+{
+  "name": "mevn-book-directory",
+  "template": "Default",
+  "isConfigured": {
+    "client": false,
+    "server": false
+  }
+}
