@@ -20,12 +20,6 @@ app.use(express.json());
 //Database connection
 connectDatabase();
 
-app.set('view engine', 'html');
-
-// Static folder
-app.use(express.static(__dirname + '/views/'));
-
-// Defining route middleware
 app.use('/api', routers);
 
 //Error Handler is a middleware
