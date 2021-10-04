@@ -9,8 +9,7 @@ const getAllBooks = async (req,res) => {
         data: books
     })
 }
-
-const addBook = asyncErrorWrapper (async(req,res) => {
+const addBook = asyncErrorWrapper (async(req,res,next) => {
     const info = req.body;
 
     const bookList = await Book.create({
