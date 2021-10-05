@@ -10,7 +10,7 @@ const UserSchema = new Schema({
     },
     email: {
         type: String,
-        required: [true, "Please provide a email"],
+        required: true,
         unique: true,
         match: [
             /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
@@ -19,7 +19,7 @@ const UserSchema = new Schema({
     },
     password:{
         type: String,
-        minlength: [6, "Please provide a password with min length 6"],
+        minlength: 6,
         required: [true, "Please provide a password"],
         select: false
     },
@@ -43,11 +43,11 @@ UserSchema.methods.generateJwtFromUser = function(){
     return token;
 }
 
-UserSchema.pre("save", function(next){
-    if(!this.isModified("password")){
+UserSchema.pre("save",function (next) {
+    if (!this.isModified("password")){
         next();
     }
-    bcrypt.genSalt(10, (err,salt) => {
+    bcrypt.genSalt(10, (err, salt) => {
         if(err) next(err);
         bcrypt.hash(this.password, salt, (err,hash) => {
             if(err) next(err);
@@ -55,7 +55,6 @@ UserSchema.pre("save", function(next){
             next();
         })
     })
-    next();
 })
 
 module.exports = mongoose.model('User', UserSchema);
