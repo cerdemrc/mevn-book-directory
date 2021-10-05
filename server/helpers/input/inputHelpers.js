@@ -5,7 +5,7 @@ const validateUserInput = (email,password) => {
 }
 
 const comparePassword = (password, hashedPassword) => {
-    bcrypt.compareSync(password, hashedPassword);
+    return bcrypt.compareSync(password, hashedPassword);
 }
 
 module.exports = {
