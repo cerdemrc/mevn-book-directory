@@ -20,7 +20,7 @@ const login = asyncErrorWrapper(async (req,res,next) => {
     sendJwtToClient(user, res);
 })
 
-const register = asyncErrorWrapper(async (req,res, next) => {
+const register = asyncErrorWrapper(async (req,res) => {
     const { name, email, password, role } = req.body;
 
     const user = await User.create({
@@ -43,8 +43,23 @@ const getUser = (req,res) => {
     })
 }
 
+const logout = asyncErrorWrapper(async (req,res) => {
+    return res
+    .status(200)
+    .cookie({
+        httpOnly: true,
+        expires: new Date(Date.now()), //delete access token
+        secure: process.env.NODE_ENV === "development" ? false : true
+    })
+    .json({
+        success: true,
+        message: "Logout Successful"
+    })
+})
+
 module.exports = {
     login,
+    logout,
     register,
     getUser
 }
