@@ -1,0 +1,46 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI';
+}
+
+body{
+    background: $gradient;
+    font-size: 10px;
+    animation: 2s ease fadeIn;
+}
+
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+
+a{
+    text-decoration: none;
+}
+
+.btn {
+    padding: 4px 14px;
+    outline: none;
+    border: none;
+    color: #fff;
+    font-size: 1.7em;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.418);
+    transition: 1s ease;
+    &:hover {
+      transform: translateY(2px);
+      cursor: pointer;
+    }
+    &-blue {
+      background: $blue;
+    }
+    &-gradient{
+        background: $gradient;
+    }
+}
