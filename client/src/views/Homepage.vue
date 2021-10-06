@@ -1,10 +1,23 @@
 <template>
-  <div></div>
+  <div>
+    <Header />
+    <Welcome />
+    <BookList />
+  </div>
 </template>
 
 <script>
-export default {};
+import BookList from "./components/BookList.vue";
+import Header from "./components/Header.vue";
+import Welcome from "./components/Welcome.vue";
+export default {
+  components: {
+    BookList,
+    Header,
+    Welcome,
+  },
+};
 </script>
 
-<style lang="scss" scoped>
+<style>
 </style>

@@ -1,14 +1,20 @@
 <template>
   <div>
-    <Auth />
+    <Header />
+    <Welcome />
+    <BookList />
   </div>
 </template>
 
 <script>
-import Auth from "./views/Auth.vue";
+import BookList from "./components/BookList.vue";
+import Header from "./components/Header.vue";
+import Welcome from "./components/Welcome.vue";
 export default {
   components: {
-    Auth,
+    BookList,
+    Header,
+    Welcome,
   },
 };
 </script>

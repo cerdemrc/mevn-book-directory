@@ -67,9 +67,6 @@ export default {
       & input {
         margin: 10px 0;
         padding: 4px 6px;
-        border: none;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.438);
-        outline: none;
         width: 150%;
       }
       & button {
