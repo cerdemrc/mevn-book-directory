@@ -1,10 +1,23 @@
 <template>
-  <div></div>
+  <div>
+    <Header />
+    <Welcome />
+    <AddForm />
+  </div>
 </template>
 
 <script>
-export default {};
+import AddForm from "../components/AddForm.vue";
+import Header from "../components/Header.vue";
+import Welcome from "../components/Welcome.vue";
+export default {
+  components: {
+    AddForm,
+    Header,
+    Welcome,
+  },
+};
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 </style>

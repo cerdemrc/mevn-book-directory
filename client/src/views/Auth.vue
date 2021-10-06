@@ -1,20 +1,20 @@
 <template>
   <div class="auth">
-    <div class="auth-wrapper">
+    <div class="form-wrapper">
       <h1 v-if="isLogin">Login</h1>
       <h1 v-else>Sign Up</h1>
-      <div class="auth-wrapper-input">
+      <div class="form-wrapper-input">
         <input v-if="!isLogin" type="text" placeholder="Name" />
         <input type="text" placeholder="Username" />
         <input type="password" placeholder="Password" />
         <button v-if="isLogin" class="btn btn-gradient">LOGIN</button>
         <button v-else class="btn btn-gradient">SIGN UP</button>
       </div>
-      <div v-if="isLogin" class="auth-wrapper-bottom">
+      <div v-if="isLogin" class="form-wrapper-bottom">
         <h2>Sign Up Using</h2>
         <a href="#" @click="toggleIt">SIGN UP</a>
       </div>
-      <div v-else class="auth-wrapper-bottom">
+      <div v-else class="form-wrapper-bottom">
         <h2>Login Using</h2>
         <a href="#" @click="toggleIt">LOGIN</a>
       </div>
@@ -42,16 +42,9 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  &-wrapper {
-    background: #fff;
-    border-radius: 10px;
+  & .form-wrapper {
     margin-top: 100px;
     width: 30%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding-top: 5em;
     & h1 {
       font-size: 2.5rem;

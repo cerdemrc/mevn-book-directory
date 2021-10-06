@@ -2,22 +2,22 @@
   <div>
     <Header />
     <Welcome />
-    <BookList />
+    <AddForm />
   </div>
 </template>
 
 <script>
-import BookList from "./components/BookList.vue";
-import Header from "./components/Header.vue";
-import Welcome from "./components/Welcome.vue";
+import AddForm from "@/components/AddForm.vue";
+import Header from "@/components/Header.vue";
+import Welcome from "@/components/Welcome.vue";
 export default {
   components: {
-    BookList,
+    AddForm,
     Header,
     Welcome,
   },
 };
 </script>
 
-<style>
+<style lang="scss">
 </style>
