@@ -62,4 +62,28 @@ export default {};
     }
   }
 }
+@media screen and(max-width: 768px) {
+  .add-form {
+    & .form-wrapper {
+      width: 90%;
+    }
+  }
+}
+@media screen and(max-width: 415px) {
+  .add-form {
+    & .form-wrapper {
+      width: 90%;
+      & .button-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        & .btn {
+          padding: 4px 0;
+          font-size: 1.2em;
+        }
+      }
+    }
+  }
+}
 </style>

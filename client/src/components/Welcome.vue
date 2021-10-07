@@ -63,4 +63,9 @@ export default {};
     transform: translate(0);
   }
 }
+@media screen and(max-width: 467px) {
+  .welcome {
+    font-size: 2em;
+  }
+}
 </style>

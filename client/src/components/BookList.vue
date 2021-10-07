@@ -48,4 +48,17 @@ export default {
     }
   }
 }
+@media screen and (max-width: 768px) {
+  .book-container {
+    max-width: 700px;
+    & .book-list {
+      margin-top: 30px;
+      justify-content: center;
+      align-items: center;
+      & .book-card {
+        flex: 0 1 calc(100% - 1em);
+      }
+    }
+  }
+}
 </style>
