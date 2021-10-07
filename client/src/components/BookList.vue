@@ -26,6 +26,7 @@ export default {
 .book-container {
   max-width: 1200px;
   margin: 0 auto;
+  animation: 2s ease fadeIn;
   & .book-list {
     margin-top: 50px;
     display: flex;

@@ -10,7 +10,12 @@
       <div class="input"><input type="text" placeholder="Page Count" /></div>
       <div class="input"><input type="text" placeholder="Type" /></div>
       <div class="input"><input type="text" placeholder="Category" /></div>
-      <button class="btn btn-pink">ADD</button>
+      <div class="button-group">
+        <button class="btn btn-pink">ADD</button>
+        <router-link to="/" tag="button" class="btn btn-blue"
+          >CANCEL</router-link
+        >
+      </div>
     </div>
   </div>
 </template>
@@ -24,6 +29,7 @@ export default {};
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: 2s ease fadeIn;
   & .form-wrapper {
     margin-top: 30px;
     width: 50%;
@@ -43,10 +49,16 @@ export default {};
         resize: none;
       }
     }
-    & .btn {
-      margin: 2em 0;
-      width: 40%;
-      padding: 6px 0;
+    & .button-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      & .btn {
+        margin: 0.5em 0;
+        width: 50%;
+        padding: 6px 0;
+      }
     }
   }
 }
