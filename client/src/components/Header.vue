@@ -1,7 +1,9 @@
 <template>
   <div class="header">
     <div class="header-left">
-      <button class="btn btn-blue">add a book</button>
+      <router-link to="/add-book" tag="button" class="btn btn-blue"
+        >add a book</router-link
+      >
     </div>
     <div class="header-right">
       <button class="btn btn-blue">logout</button>
