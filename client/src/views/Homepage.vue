@@ -16,6 +16,9 @@ export default {
     Header,
     Welcome,
   },
+  mounted() {
+    this.$store.dispatch("getBookList");
+  },
 };
 </script>
 

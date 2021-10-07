@@ -45,33 +45,6 @@ export default {
         transition: 0.2s;
         transform: translate(0, 1px);
       }
-      & .book-top {
-        display: flex;
-        flex-direction: column;
-        & .delete-icon {
-          width: 20px;
-          height: 20px;
-        }
-        & .book-title {
-          font-size: 3em;
-          font-weight: 500;
-        }
-        & .book-author {
-          font-size: 1.5em;
-          font-weight: 400;
-        }
-        &-info {
-          margin-top: 15px;
-          font-size: 1.5em;
-          & .separator {
-            padding: 0 15px;
-          }
-        }
-        &-description {
-          margin-top: 15px;
-          font-size: 1.2em;
-        }
-      }
     }
   }
 }

@@ -19,7 +19,16 @@
       <span class="separator">|</span>
       <span><b>Page:</b> {{ book.pageCount }}</span>
       <span class="separator">|</span>
-      <span><b>Category:</b> {{ book.category }}</span>
+      <span
+        ><b>Category: </b>
+        <span
+          v-for="category in book.categories"
+          :key="category"
+          class="category-item"
+        >
+          {{ category }}</span
+        >
+      </span>
     </p>
     <p class="book-top-description">{{ book.description }}</p>
   </div>
@@ -37,4 +46,34 @@ export default {
 </script>
 
 <style lang="scss">
+.book-top {
+  display: flex;
+  flex-direction: column;
+  & .delete-icon {
+    width: 20px;
+    height: 20px;
+  }
+  & .book-title {
+    font-size: 3em;
+    font-weight: 500;
+  }
+  & .book-author {
+    font-size: 1.5em;
+    font-weight: 400;
+  }
+  &-info {
+    margin-top: 15px;
+    font-size: 1.5em;
+    & .separator {
+      padding: 0 15px;
+    }
+    & .category-item + .category-item:before {
+      content: ", ";
+    }
+  }
+  &-description {
+    margin-top: 15px;
+    font-size: 1.2em;
+  }
+}
 </style>
