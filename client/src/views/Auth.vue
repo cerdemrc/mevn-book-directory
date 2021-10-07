@@ -12,11 +12,11 @@
       </div>
       <div v-if="isLogin" class="form-wrapper-bottom">
         <h2>Sign Up Using</h2>
-        <a href="#" @click="toggleIt">SIGN UP</a>
+        <router-link to="/register" tag="a">SIGN UP</router-link>
       </div>
       <div v-else class="form-wrapper-bottom">
         <h2>Login Using</h2>
-        <a href="#" @click="toggleIt">LOGIN</a>
+        <router-link to="/login" tag="a">LOGIN</router-link>
       </div>
     </div>
   </div>
@@ -24,14 +24,9 @@
 
 <script>
 export default {
-  data() {
-    return {
-      isLogin: true,
-    };
-  },
-  methods: {
-    toggleIt() {
-      this.isLogin = !this.isLogin;
+  computed: {
+    isLogin() {
+      return this.$route.name == "login";
     },
   },
 };
