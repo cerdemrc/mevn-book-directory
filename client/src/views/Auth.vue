@@ -37,6 +37,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: 2s ease fadeIn;
   & .form-wrapper {
     margin-top: 100px;
     width: 30%;
@@ -62,7 +63,9 @@ export default {
         width: 100%;
         padding: 8px 0;
         font-size: 1.3em;
-        width: 150%;
+        font-weight: 500;
+        width: 100%;
+        color: $text;
       }
     }
     &-bottom {
@@ -78,7 +81,7 @@ export default {
       & a {
         font-size: 1.5em;
         margin-top: 5px;
-        color: #000;
+        color: $secondary;
         font-weight: 500;
       }
     }

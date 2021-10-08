@@ -28,14 +28,13 @@ export default {
   margin: 0 auto;
   animation: 2s ease fadeIn;
   & .book-list {
-    margin-top: 50px;
+    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     & .book-card {
-      background: #fff;
-      border-radius: 40px 40px 0 40px;
-      flex: 0 1 calc(50% - 1em);
+      background: $text;
+      flex: 0 1 calc(100% - 1em);
       padding: 40px;
       box-shadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.05);
       transform: translate(0, -1px);

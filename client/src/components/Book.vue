@@ -14,11 +14,9 @@
         />
       </a>
     </div>
-    <p class="book-top-info">
+    <div class="book-top-info">
       <span><b>Type: </b> {{ book.type }} </span>
-      <span class="separator">|</span>
       <span><b>Page:</b> {{ book.pageCount }}</span>
-      <span class="separator">|</span>
       <span
         ><b>Category: </b>
         <span
@@ -29,7 +27,7 @@
           {{ category }}</span
         >
       </span>
-    </p>
+    </div>
     <p class="book-top-description">{{ book.description }}</p>
   </div>
 </template>
@@ -63,10 +61,9 @@ export default {
   }
   &-info {
     margin-top: 15px;
-    font-size: 1.5em;
-    & .separator {
-      padding: 0 15px;
-    }
+    font-size: 1.2em;
+    display: flex;
+    flex-direction: column;
     & .category-item + .category-item:before {
       content: ", ";
     }

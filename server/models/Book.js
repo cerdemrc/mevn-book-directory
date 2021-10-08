@@ -15,8 +15,8 @@ const BookSchema = new Schema({
     description:{
         type: String
     },
-    authors:{
-        type: Array
+    author:{
+        type: String
     },
     categories:{
         type: Array
