@@ -7,8 +7,8 @@
         <input v-if="!isLogin" type="text" placeholder="Name" />
         <input type="text" placeholder="Username" />
         <input type="password" placeholder="Password" />
-        <button v-if="isLogin" class="btn btn-gradient">LOGIN</button>
-        <button v-else class="btn btn-gradient">SIGN UP</button>
+        <button v-if="isLogin" class="btn btn-orange">LOGIN</button>
+        <button v-else class="btn btn-orange">SIGN UP</button>
       </div>
       <div v-if="isLogin" class="form-wrapper-bottom">
         <h2>Sign Up Using</h2>
@@ -81,7 +81,7 @@ export default {
       & a {
         font-size: 1.5em;
         margin-top: 5px;
-        color: $secondary;
+        color: $darkText;
         font-weight: 500;
       }
     }

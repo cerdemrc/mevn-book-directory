@@ -13,6 +13,11 @@ export default new Router({
       component: () => import("@/views/Homepage.vue")
     },
     {
+        path: "/books",
+        name: "books",
+        component: () => import("@/views/Books.vue")
+      },
+    {
       path: "/add-book",
       name: "add",
       component: () => import("@/views/AddBook.vue")

@@ -1,8 +1,10 @@
 <template>
-  <div class="book-container">
-    <div class="book-list">
-      <div class="book-card" v-for="book in bookList" :key="book">
-        <Book :book="book" />
+  <div class="container">
+    <div class="book-container">
+      <div class="book-list">
+        <div class="book-card" v-for="book in bookList" :key="book">
+          <Book :book="book" />
+        </div>
       </div>
     </div>
   </div>
@@ -32,9 +34,15 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
     & .book-card {
       background: $text;
-      flex: 0 1 calc(100% - 1em);
+      color: $darkText;
+      //  background: transparent;
+      //  color: $text;
+      flex: 0 1 calc(50% - 1em);
+      border-radius: 80px 80px 0 80px;
+      border: 1px dashed $darkText;
       padding: 40px;
       box-shadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.05);
       transform: translate(0, -1px);

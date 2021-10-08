@@ -8,7 +8,9 @@
 }
 
 body{
-    background: $gradient;
+    //background: $secondary;
+    background: url("../assets/images/bg.png") no-repeat;
+    background-size: cover;
     font-size: 10px;
     animation: 2s ease fadeIn;
     word-spacing: 1px;
@@ -26,7 +28,7 @@ input, textarea{
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.438);
     outline: none;
-    background-color: $text;;
+    background-color: $text;
 }
 
 .form-wrapper{
@@ -37,6 +39,11 @@ input, textarea{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.container{
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .btn {
@@ -57,7 +64,10 @@ input, textarea{
     }
     &-pink {
         background: $primary;
-      }
+    }
+    &-orange{
+        background: $secondary;
+    }
     &-gradient{
         background: $gradient;
     }
