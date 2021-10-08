@@ -5,7 +5,11 @@
         <router-link to="/" tag="h1">Welcome Ceren </router-link>
       </div>
       <div class="header-right">
-        <router-link to="/books" tag="button" class="btn btn-orange"
+        <router-link
+          v-if="!isShowButtons"
+          to="/books"
+          tag="button"
+          class="btn btn-orange"
           >Books
         </router-link>
         <div class="header-right-buttons" v-if="isShowButtons">
@@ -41,7 +45,6 @@ export default {
     display: flex;
     align-items: center;
     &-buttons {
-      margin-left: 30px;
       & a {
         & img {
           width: 30px;

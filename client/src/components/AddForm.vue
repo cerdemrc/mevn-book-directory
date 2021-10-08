@@ -1,6 +1,7 @@
 <template>
   <div class="add-form">
     <div class="form-wrapper">
+      <h1 class="form-title">Add a book</h1>
       <div class="input"><input type="text" placeholder="Book Title" /></div>
       <div class="input"><input type="text" placeholder="Author" /></div>
       <div class="input">
@@ -11,8 +12,8 @@
       <div class="input"><input type="text" placeholder="Type" /></div>
       <div class="input"><input type="text" placeholder="Category" /></div>
       <div class="button-group">
-        <button class="btn btn-pink">ADD</button>
-        <router-link to="/" tag="button" class="btn btn-blue"
+        <button class="btn btn-orange">ADD</button>
+        <router-link to="/" tag="button" class="btn btn-dark"
           >CANCEL</router-link
         >
       </div>
@@ -27,6 +28,7 @@ export default {};
 <style lang="scss">
 .add-form {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   animation: 2s ease fadeIn;
@@ -34,6 +36,10 @@ export default {};
     margin-top: 30px;
     width: 50%;
     padding-top: 2em;
+    & .form-title {
+      color: $darkText;
+      font-size: 2.3em;
+    }
     & .input {
       width: 100%;
       display: flex;
