@@ -4,9 +4,6 @@
   <p><strong>Used Techs:</strong> Node Js, Express Js, MongoDb, Vue Js, Vuex, Vue-Router, Axios, SCSS</p>
 </div>
 
-<h2>📷 Screenshots</h2>
-<img src="https://user-images.githubusercontent.com/40372039/136376422-ae2d28df-e60c-43cd-b514-85e9a64bdce3.png">
-
 ## ⚙ Stack
 - <strong>MongoDb and Mongoose</strong> - MongoDb as a Database and mongoose as as a Object Data Modeling library for MongoDB and Node.js
 - <strong>Node</strong> - runtime JavaScript
