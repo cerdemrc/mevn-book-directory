@@ -21,8 +21,13 @@ export const store = new Vuex.Store({
         GET_BOOKLIST(state, payload){
             state.bookList = payload;
         },
-        //ADD_BOOK(state, payload){},
-        //DELETE_BOOK(state, id){}
+        ADD_BOOK(state, payload){
+            state.bookList.push(payload)
+        },
+        //DELETE_BOOK(id){
+        //    console.log("mutations",id)
+        //    //state.bookList.push(payload)
+        //},
         LOADING_STATUS(state, newLoadingStatus){
             state.loadingStatus = newLoadingStatus;
         }
@@ -38,10 +43,22 @@ export const store = new Vuex.Store({
                 .catch(err => console.log(err))
         },
         addBook({commit}, payload){
-            commit("ADD_BOOK", payload)
+            commit('LOADING_STATUS', true);
+            axios.post("/books", payload)
+                .then(res => {
+                    commit("ADD_BOOK", res.data.data)
+                    commit('LOADING_STATUS', false)
+                })
+                .catch(err => console.log(err))  
         },
         deleteBook({commit}, id){
-            commit("DELETE_BOOK", id)
+            commit('LOADING_STATUS', true);
+            axios.delete(`/books/${id}`)
+                .then(res => {
+                    commit("GET_BOOKLIST", res.data.data)
+                    commit('LOADING_STATUS', false)
+                })
+                .catch(err => console.log(err))  
         }
     }
 })

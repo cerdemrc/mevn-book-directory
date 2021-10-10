@@ -2,17 +2,38 @@
   <div class="add-form">
     <div class="form-wrapper">
       <h1 class="form-title">Add a book</h1>
-      <div class="input"><input type="text" placeholder="Book Title" /></div>
-      <div class="input"><input type="text" placeholder="Author" /></div>
       <div class="input">
-        <textarea placeholder="Description" rows="4" />
+        <input type="text" v-model="addBook.title" placeholder="Book Title" />
       </div>
-
-      <div class="input"><input type="text" placeholder="Page Count" /></div>
-      <div class="input"><input type="text" placeholder="Type" /></div>
-      <div class="input"><input type="text" placeholder="Category" /></div>
+      <div class="input">
+        <input type="text" v-model="addBook.author" placeholder="Author" />
+      </div>
+      <div class="input">
+        <textarea
+          placeholder="Description"
+          v-model="addBook.description"
+          rows="4"
+        />
+      </div>
+      <div class="input">
+        <input
+          type="number"
+          v-model="addBook.pageCount"
+          placeholder="Page Count"
+        />
+      </div>
+      <div class="input">
+        <input type="text" v-model="addBook.type" placeholder="Type" />
+      </div>
+      <div class="input">
+        <input
+          type="text"
+          v-model="addBook.categories"
+          placeholder="Category"
+        />
+      </div>
       <div class="button-group">
-        <button class="btn btn-orange">ADD</button>
+        <button @click="saveBook" class="btn btn-orange">ADD</button>
         <router-link to="/books" tag="button" class="btn btn-dark"
           >CANCEL</router-link
         >
@@ -22,7 +43,26 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      addBook: {
+        title: null,
+        type: null,
+        pageCount: null,
+        description: null,
+        author: null,
+        categories: null,
+      },
+    };
+  },
+  methods: {
+    saveBook() {
+      this.$store.dispatch("addBook", this.addBook);
+      this.$router.push("/books");
+    },
+  },
+};
 </script>
 
 <style lang="scss">

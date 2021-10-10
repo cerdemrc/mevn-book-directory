@@ -5,7 +5,7 @@
         <h1 class="book-title">{{ book.title }}</h1>
         <h2 class="book-author">{{ book.author }}</h2>
       </div>
-      <a href="#">
+      <a @click="deleteBook(book._id)">
         <img
           class="delete-icon"
           src="@/assets/images/delete.png"
@@ -40,6 +40,11 @@ export default {
       required: true,
     },
   },
+  methods: {
+    deleteBook(id) {
+      this.$store.dispatch("deleteBook", id);
+    },
+  },
 };
 </script>
 
@@ -47,6 +52,9 @@ export default {
 .book-top {
   display: flex;
   flex-direction: column;
+  & a:hover {
+    cursor: pointer;
+  }
   & .delete-icon {
     width: 20px;
     height: 20px;
