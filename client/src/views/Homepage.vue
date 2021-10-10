@@ -16,6 +16,16 @@
         </div>
       </div>
     </div>
+    <h4 class="developed">
+      Developed by
+      <a
+        href="https://github.com/cerdemrc"
+        target="blank"
+        style="color: #e81224"
+        >Ceren</a
+      >
+      with ❤️
+    </h4>
   </div>
 </template>
 
@@ -55,6 +65,15 @@ export default {
     height: 100%;
   }
 }
+.developed {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  letter-spacing: 1.5px;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 1);
+}
 
 @media screen and (max-width: 768px) {
   .home {
@@ -85,6 +104,10 @@ export default {
       }
     }
   }
+  .developed {
+    left: 10px;
+    font-size: 1.5em;
+  }
 }
 @media screen and (max-width: 415px) {
   .home {
@@ -103,6 +126,9 @@ export default {
         height: 100%;
       }
     }
+  }
+  .developed {
+    font-size: 1em;
   }
 }
 </style>
