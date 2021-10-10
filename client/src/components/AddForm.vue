@@ -13,7 +13,7 @@
       <div class="input"><input type="text" placeholder="Category" /></div>
       <div class="button-group">
         <button class="btn btn-orange">ADD</button>
-        <router-link to="/" tag="button" class="btn btn-dark"
+        <router-link to="/books" tag="button" class="btn btn-dark"
           >CANCEL</router-link
         >
       </div>

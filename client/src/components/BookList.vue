@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <Loader />
     <div class="book-container">
       <div class="book-list">
         <div class="book-card" v-for="book in bookList" :key="book">
@@ -12,9 +13,11 @@
 
 <script>
 import Book from "./Book.vue";
+import Loader from "./Loader.vue";
 export default {
   components: {
     Book,
+    Loader,
   },
   computed: {
     bookList() {
