@@ -18,8 +18,9 @@ export default {
   width: 80px;
   height: 80px;
   position: fixed;
-  top: 50%;
-  left: 50%;
+  top: 48%;
+  left: 48%;
+  z-index: 99;
 }
 .loading:after {
   content: " ";
