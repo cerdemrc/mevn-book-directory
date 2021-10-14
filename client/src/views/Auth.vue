@@ -3,12 +3,25 @@
     <div class="form-wrapper">
       <h1 v-if="isLogin">Login</h1>
       <h1 v-else>Sign Up</h1>
+      <p class="err-message" v-if="isLoginErr">User not found.</p>
       <div class="form-wrapper-input">
-        <input v-if="!isLogin" type="text" placeholder="Name" />
-        <input type="text" placeholder="Username" />
-        <input type="password" placeholder="Password" />
-        <button v-if="isLogin" class="btn btn-orange">LOGIN</button>
-        <button v-else class="btn btn-orange">SIGN UP</button>
+        <input
+          v-if="!isLogin"
+          type="text"
+          placeholder="Name"
+          v-model="user.name"
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          pattern=".+@globex\.com"
+          v-model="user.email"
+        />
+        <input type="password" placeholder="Password" v-model="user.password" />
+        <button v-if="isLogin" class="btn btn-orange" @click="login">
+          LOGIN
+        </button>
+        <button v-else class="btn btn-orange" @click="register">SIGN UP</button>
       </div>
       <div v-if="isLogin" class="form-wrapper-bottom">
         <h2>Sign Up Using</h2>
@@ -24,9 +37,33 @@
 
 <script>
 export default {
+  data() {
+    return {
+      user: {
+        name: null,
+        email: null,
+        password: null,
+      },
+    };
+  },
   computed: {
     isLogin() {
       return this.$route.name == "login";
+    },
+    isLoginErr() {
+      return this.$store.getters.isLoginErr;
+    },
+  },
+  methods: {
+    login() {
+      const userInfos = {
+        email: this.user.email,
+        password: this.user.password,
+      };
+      this.$store.dispatch("login", userInfos);
+    },
+    register() {
+      this.$store.dispatch("register", this.user);
     },
   },
 };
@@ -42,6 +79,12 @@ export default {
     margin-top: 100px;
     width: 30%;
     padding-top: 5em;
+    & .err-message {
+      color: $secondary;
+      font-size: 1.2em;
+      letter-spacing: 1px;
+      font-weight: 500;
+    }
     & h1 {
       font-size: 2.5rem;
       padding-bottom: 1em;

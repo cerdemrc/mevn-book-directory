@@ -2,7 +2,7 @@
   <div class="container">
     <div class="header">
       <div class="header-left">
-        <router-link to="/" tag="h1">Welcome Ceren </router-link>
+        <router-link to="/" tag="h1">Welcome {{ username.name }} </router-link>
       </div>
       <div class="header-right">
         <router-link
@@ -16,9 +16,9 @@
           <router-link to="/add-book" tag="a">
             <img src="../assets/images/add.png" />
           </router-link>
-          <router-link to="/login" tag="a">
+          <a @click="logout">
             <img src="../assets/images/logout.png" />
-          </router-link>
+          </a>
         </div>
       </div>
     </div>
@@ -30,6 +30,14 @@ export default {
   computed: {
     isShowButtons() {
       return this.$route.name != "home";
+    },
+    username() {
+      return this.$store.getters.getUser;
+    },
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch("logout");
     },
   },
 };
