@@ -1,12 +1,12 @@
 <template>
   <div class="auth">
     <div class="form-wrapper">
-      <h1 v-if="isLogin">Login</h1>
+      <h1 v-if="isLoginRoute">Login</h1>
       <h1 v-else>Sign Up</h1>
-      <p class="err-message" v-if="isLoginErr">User not found.</p>
+      <!--<p class="err-message" v-if="isLoginErr">User not found.</p>-->
       <div class="form-wrapper-input">
         <input
-          v-if="!isLogin"
+          v-if="!isLoginRoute"
           type="text"
           placeholder="Name"
           v-model="user.name"
@@ -18,12 +18,12 @@
           v-model="user.email"
         />
         <input type="password" placeholder="Password" v-model="user.password" />
-        <button v-if="isLogin" class="btn btn-orange" @click="login">
+        <button v-if="isLoginRoute" class="btn btn-orange" @click="login">
           LOGIN
         </button>
         <button v-else class="btn btn-orange" @click="register">SIGN UP</button>
       </div>
-      <div v-if="isLogin" class="form-wrapper-bottom">
+      <div v-if="isLoginRoute" class="form-wrapper-bottom">
         <h2>Sign Up Using</h2>
         <router-link to="/register" tag="a">SIGN UP</router-link>
       </div>
@@ -47,12 +47,18 @@ export default {
     };
   },
   computed: {
-    isLogin() {
+    isLoginRoute() {
       return this.$route.name == "login";
     },
-    isLoginErr() {
-      return this.$store.getters.isLoginErr;
+    loggedIn() {
+      //  //  return this.$store.state.auth.initialState.status.loggedIn;
+      return this.$store.state.auth.initialState.status.loggedIn;
     },
+  },
+  mounted() {
+    if (this.loggedIn) {
+      this.$router.push("/");
+    }
   },
   methods: {
     login() {
@@ -60,7 +66,11 @@ export default {
         email: this.user.email,
         password: this.user.password,
       };
-      this.$store.dispatch("login", userInfos);
+      if (this.user.email && this.user.password) {
+        this.$store
+          .dispatch("login", userInfos)
+          .then(() => this.$router.push("/"));
+      }
     },
     register() {
       this.$store.dispatch("register", this.user);

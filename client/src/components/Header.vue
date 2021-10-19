@@ -1,8 +1,10 @@
 <template>
   <div class="container">
     <div class="header">
-      <div class="header-left">
-        <router-link to="/" tag="h1">Welcome {{ username.name }} </router-link>
+      <div class="header-left" v-if="currentUser">
+        <router-link to="/" tag="h1"
+          >Welcome {{ currentUser.name }}
+        </router-link>
       </div>
       <div class="header-right">
         <router-link
@@ -31,8 +33,8 @@ export default {
     isShowButtons() {
       return this.$route.name != "home";
     },
-    username() {
-      return this.$store.getters.getUser;
+    currentUser() {
+      return this.$store.state.auth.initialState.user;
     },
   },
   methods: {

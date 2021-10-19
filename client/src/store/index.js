@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import book from "./modules/book"
-import auth from "./modules/auth"
+import book from "./book.module"
+import auth from "./auth.module"
 
 Vue.use(Vuex)
 
