@@ -15,6 +15,9 @@
 - <strong>JsonWebToken</strong> - for creating JSON-based access tokens
 - <strong>bcryptjs</strong> - for hashing the user passwords
 
+## 📷 Screenshots
+<img src="https://user-images.githubusercontent.com/40372039/138366037-d4ea25cd-c95b-4033-b0a0-aeaf3ed5813c.png">
+
 ## ⚡ API Routes
 
 | Method | Endpoint | Authentication | Description |
