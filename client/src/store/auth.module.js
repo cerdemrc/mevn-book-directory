@@ -64,7 +64,7 @@ const actions = {
         
                 localStorage.setItem('token', token)
                 localStorage.setItem('user', JSON.stringify(user))
-                axios.defaults.headers['Authorization'] = `Bearer ${token}` //or headers.common['Authorization']
+                axios.defaults.headers['Authorization'] = `Bearer: ${token}`
 
 
                 commit('AUTH_SUCCESS', userInfo)
@@ -94,7 +94,7 @@ const actions = {
         await localStorage.removeItem('token')
         await localStorage.removeItem('user')
         commit('LOGOUT')
-        delete axios.defaults.headers.common['Authorization']
+        delete axios.defaults.headers['Authorization']
         return
     }
 }
