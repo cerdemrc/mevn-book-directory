@@ -2,6 +2,10 @@
   <div class="auth">
     <div class="form-wrapper">
       <h1>Login</h1>
+      <div class="login-info">
+        <p>email: testing@gmail.com</p>
+        <p>password: 123456</p>
+      </div>
       <p class="err-message" v-if="error">{{ error }}</p>
       <div class="form-wrapper-input">
         <input
@@ -59,6 +63,15 @@ export default {
     margin-top: 100px;
     width: 30%;
     padding-top: 5em;
+    & .login-info {
+      background: $secondary;
+      opacity: 0.8;
+      color: #fff;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      padding: 10px;
+      margin-bottom: 1.2em;
+    }
     & .err-message {
       color: $secondary;
       font-size: 1.2em;
@@ -67,7 +80,7 @@ export default {
     }
     & h1 {
       font-size: 2.5rem;
-      padding-bottom: 1em;
+      padding-bottom: 0.4em;
       letter-spacing: 3px;
     }
     &-input {
