@@ -90,7 +90,7 @@ const actions = {
         }
     },
     async logout({commit}){
-        //await axios.get('auth/logout')
+        await axios.get('auth/logout')
         await localStorage.removeItem('token')
         await localStorage.removeItem('user')
         commit('LOGOUT')
