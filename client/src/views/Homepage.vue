@@ -31,17 +31,10 @@
 
 <script>
 import Header from "../components/Header.vue";
-import hasUser from "../mixins/hasUser";
 export default {
   components: {
     Header,
   },
-  mixins: [hasUser],
-  //  mounted() {
-  //    if (!this.$store.state.auth.initialState.user) {
-  //      this.$router.push("/login");
-  //    }
-  //  },
 };
 </script>
 
