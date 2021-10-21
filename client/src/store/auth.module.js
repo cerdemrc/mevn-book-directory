@@ -1,238 +1,107 @@
-import axios from "../axios"
-import router from "../router"
+import axios from '../services/Api'
+import { AUTH_REQUEST, AUTH_SUCCESS , AUTH_ERROR, REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_ERROR, LOGOUT } from "./mutation-types"
 
-const user = JSON.parse(localStorage.getItem('user'));
-const initialState = user 
-    ? { status : {loggedIn: true}, user}
-    : { status : {loggedIn: false}, user: null}
+const state = {
+    token: localStorage.getItem('token') || '',
+    user: JSON.parse(localStorage.getItem('user')) || {},
+    status: '',
+    error: null
+};
 
-
-export default{
-    state:{
-        initialState
-    },
-    mutations :{
-        loginSuccess(state, user) {
-            state.status.loggedIn = true;
-            state.user = user;
-        },
-        loginFailure(state) {
-            state.status.loggedIn = false;
-            state.user = null;
-        },
-        logout(state) {
-            state.status.loggedIn = false;
-            state.user = null;
-        },
-        registerSuccess(state) {
-            state.status.loggedIn = false;
-        },
-        registerFailure(state) {
-            state.status.loggedIn = false;
-        }
-    },
-    actions:{
-        login({commit}, user){
-            axios.post("/auth/login", user)
-                .then(res => {
-                    axios.defaults.headers.common['x-access-token'] = res.data.access_token;
-                    if(res.data.access_token){
-                        localStorage.setItem('user', JSON.stringify(res.data.data))
-                    }
-                    commit('loginSuccess', res);  
-                })
-                .catch(() => commit('loginFailure'))
-        },
-        register({commit, dispatch}, user){
-            let newUser = {}
-            newUser.name = user.name,
-            newUser.email = user.email
-            newUser.password = user.password
-            axios.post("/auth/register", user)
-                .then(() => {
-                    dispatch("login", newUser)
-                    commit('registerSuccess');
-                })
-                .catch(() => commit('registerFailure'))
-        },
-        logout({commit}){
-            localStorage.removeItem('user');
-            commit("logout")
-            router.push("/login") 
-        }
-    },
+const getters = {
+    isLoggedIn: state => !!state.token,
+    authState: state => state.status,
+    user: state => state.user,
+    error: state => state.error
 }
 
+const mutations = {
+    [AUTH_REQUEST](state) {
+        state.error = null
+        state.status = 'loading'
+    },
+    [AUTH_SUCCESS](state, userInfo) {
+        state.error = null
+        state.token = userInfo.token
+        state.user = userInfo.user
+        state.status = 'success'
+    },
+    [AUTH_ERROR](state, err) { 
+        state.status = 'error'          
+        state.error = err.response.data.message
+    },
+    [REGISTER_REQUEST](state){
+        state.error = null
+        state.status = 'loading'
+    },
+    [REGISTER_SUCCESS](state){
+        state.error = null
+        state.status = 'success'
+    },
+    [REGISTER_ERROR](state, err){ 
+        state.status = 'error' 
+        state.error = err.response.data.message
+    },
+    [LOGOUT](state){
+        state.status = ''
+        state.token = '',
+        state.user = {}
+    }
+}
+
+const actions = {
+    async login({ commit }, user) {
+        try {
+            commit('AUTH_REQUEST')
+            let res = await axios.post('auth/login', user)
+            if (res.data.success) {
+                const token = res.data.access_token
+                const user = res.data.data
+                const userInfo= {
+                    token,
+                    user
+                }
+        
+                localStorage.setItem('token', token)
+                localStorage.setItem('user', JSON.stringify(user))
+                axios.defaults.headers['Authorization'] = `Bearer ${token}` //or headers.common['Authorization']
 
 
+                commit('AUTH_SUCCESS', userInfo)
+            }
+            return res
+        } 
+        catch (error) {
+            console.log("LOGIN ERRORRRR", error)
+            commit('AUTH_ERROR', error)
+        }
+    },
+    async register({ commit }, user) {
+        try {
+            commit('REGISTER_REQUEST')
+            let res = await axios.post('auth/register', user)
+            if (res.data.success !== undefined) {
+                commit('REGISTER_SUCCESS')
+            }
+            return res;
+        } 
+        catch (error) {
+            commit('REGISTER_ERROR', error)
+        }
+    },
+    async logout({commit}){
+        //await axios.get('auth/logout')
+        await localStorage.removeItem('token')
+        await localStorage.removeItem('user')
+        commit('LOGOUT')
+        delete axios.defaults.headers.common['Authorization']
+        return
+    }
+}
 
-
-
-
-
-
-
-
-
-//import axios from "../axios"
-//import router from "../router"
-
-////const user = JSON.parse(localStorage.getItem('user'));
-////const initialState = user
-//// //  ? { status: { loggedIn: true }, user }
-////  : { status: { loggedIn: false }, user: null };
-
-//export default{
-//    namespaced: true,
-//    state:{
-//        //initialState,
-//        user: null,
-//        isLogin: false,
-//        isLoginErr: false
-//    },
-//    getters:{
-//        getUser(state){
-//            return state.user;
-//        },
-//        isLoginErr(state){
-//            return state.isLoginErr;
-//        }
-//    },
-//    mutations:{
-//        login(state, payload){
-//            state.user = payload;
-//        },
-//        register(state, payload){
-//            state.user = payload;
-//        },
-//        LOGOUT(state){
-//            state.user = null;
-//        },
-//        //loginSuccess(state, user){
-//        //    state.status.loggedIn = true;
-//        //    state.user = user;
-//        //},
-//        //loginFailure(state){
-//        //    state.status.loggedIn = false;
-//        //    state.user = null;
-//        //},
-//        //logout(state){
-//        //    state.status.loggedIn = false;
-//        //    state.user = null;
-//        //},
-//        //registerSuccess(state){
-//        //    state.status.loggedIn = false;
-//        //},
-//        //registerFailure(state){
-//        //    state.status.loggedIn = false;
-//        //}
-//    },
-//    actions:{
-//        //login({commit}, user){
-//        //    axios.post("/auth/login", user)
-//        //        .then(user => commit('loginSuccess', user))
-//        //        .catch(() => commit('loginFailure'))
-//        //},
-//        //register({commit}, user){
-//        //    axios.post("/auth/register", user)
-//        //        .then(() => commit('registerSuccess'))
-//        //        .catch(() =>  commit('registerFailure'))
-//        //},
-//        //logout({commit}){
-//        //    localStorage.removeItem("user");
-//        //    commit('logout')
-//        //}
-//        login({commit, state}, userInfos){
-//            axios.post("/auth/login", userInfos)
-//                .then(res => {
-//                    state.isLoginErr = false
-//                    if(res.data.access_token){
-//                        localStorage.setItem("user", JSON.stringify(res.data))
-//                    }               
-//                    commit("LOGIN", res.data.data)
-//                    router.push("/")         
-//                })
-//                .catch(() => state.isLoginErr = true)
-//        },
-//        //register({commit}, userInfos){
-//        //    axios.post("/auth/register", userInfos)
-//        //        .then(res => {
-//        //            commit("REGISTER", res.data.data)
-//        //            router.push("/")         
-//        //        })
-//        //        .catch(err => console.log(err))
-//        //},
-//        logout({commit}){  
-//            localStorage.removeItem("user");    
-//            commit("LOGOUT");
-//            //router.push("/login")     
-//            //axios.get("/auth/logout")
-//            //.then(() => {
-//            //    //commit("LOGOUT", res.data.data)
-//            //    router.push("/login")         
-//            //})
-//            //.catch(err => console.log(err))
-//        },
-//    }
-//}
-
-////import AuthService from "../services/auth.service"
-
-////const user = JSON.parse(localStorage.getItem('user'));
-////const initialState = user
-//// //  ? { status: { loggedIn: true }, user }
-////  : { status: { loggedIn: false }, user: null };
-
-////export const auth = {
-////    state:{
-////        initialState,
-////    },
-////    mutations:{
-////        loginSuccess(state, user){
-////            state.initialState.status.loggedIn = true;
-////            state.user = user;
-////        },
-////        loginFailure(state){
-////            state.initialState.status.loggedIn = false;
-////            state.user = null;
-////        },
-////        logout(state){
-////            state.initialState.status.loggedIn = false;
-////            state.user = null;
-////        },
-////        registerSuccess(state){
-////            state.initialState.status.loggedIn = false;
-////        },
-////        registerFailure(state){
-////            state.initialState.status.loggedIn = false;
-////        }
-////    },
-////    actions:{
-////        login({commit}, user){
-////            return AuthService.login(user)
-////                .then((user) => {
-////                    commit('loginSuccess', user)
-////                    return Promise.resolve(user);
-////                })
-////                .catch(err => {
-////                    commit('loginFailure');
-////                    return Promise.reject(err);
-////                })
-////        },
-////        register({commit}, user){
-////            return AuthService.register(user)
-////                .then(res => {
-////                    commit('registerSuccess')
-////                    return Promise.resolve(res.data);
-////                })
-////                .catch(err => {
-////                    commit('registerFailure');
-////                    return Promise.reject(err);
-////                })
-////        },
-////        logout({commit}){
-////            AuthService.logout();
-////            commit('logout');
-////        }
-////    }
-////}
+export default {
+    state,
+    actions,
+    mutations,
+    getters
+}
