@@ -3,7 +3,7 @@
     <Loader />
     <div class="book-container">
       <div class="book-list">
-        <div class="book-card" v-for="book in bookList" :key="book">
+        <div class="book-card" v-for="book in bookList" :key="book._id">
           <Book :book="book" />
         </div>
       </div>
@@ -41,8 +41,6 @@ export default {
     & .book-card {
       background: $text;
       color: $darkText;
-      //  background: transparent;
-      //  color: $text;
       flex: 0 1 calc(50% - 1em);
       border-radius: 80px 80px 0 80px;
       border: 1px dashed $darkText;

@@ -16,21 +16,21 @@ export default new Router({
         path: "/books",
         name: "books",
         component: () => import("@/views/Books.vue")
-      },
-    {
-      path: "/add-book",
-      name: "add",
-      component: () => import("@/views/AddBook.vue")
     },
+    {
+        path: "/add-book",
+        name: "add",
+        component: () => import("@/views/AddBook.vue")
+      },
     {
         path: "/register",
         name: "register",
-        component: () => import("@/views/Auth.vue")
+        component: () => import("@/views/Register.vue")
     },
     {
         path: "/login",
         name: "login",
-        component: () => import("@/views/Auth.vue")
+        component: () => import("@/views/Login.vue")
     }
   ]
 });

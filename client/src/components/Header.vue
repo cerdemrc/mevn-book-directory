@@ -1,45 +1,37 @@
 <template>
   <div class="container">
     <div class="header">
-      <div class="header-left" v-if="currentUser">
-        <router-link to="/" tag="h1"
-          >Welcome {{ currentUser.name }}
+      <div class="header-left">
+        <router-link v-if="user" to="/" tag="h1"
+          >Welcome {{ user.name }}
         </router-link>
       </div>
       <div class="header-right">
-        <router-link
-          v-if="!isShowButtons"
-          to="/books"
-          tag="button"
-          class="btn btn-orange"
+        <router-link to="/books" tag="button" class="btn btn-orange"
           >Books
         </router-link>
-        <div class="header-right-buttons" v-if="isShowButtons">
-          <router-link to="/add-book" tag="a">
-            <img src="../assets/images/add.png" />
-          </router-link>
-          <a @click="logout">
-            <img src="../assets/images/logout.png" />
-          </a>
-        </div>
+        <router-link to="/add-book" tag="a">
+          <img src="../assets/images/add.png" />
+        </router-link>
+        <a @click="logout" title="Logout">
+          <img src="../assets/images/logout.png" />
+        </a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   computed: {
-    isShowButtons() {
-      return this.$route.name != "home";
-    },
-    currentUser() {
-      return this.$store.state.auth.initialState.user;
-    },
+    ...mapGetters(["user"]),
   },
   methods: {
     logout() {
       this.$store.dispatch("logout");
+      this.$router.push("/login");
     },
   },
 };
@@ -54,22 +46,23 @@ export default {
   &-right {
     display: flex;
     align-items: center;
-    &-buttons {
-      & a {
-        & img {
-          width: 30px;
-          height: 30px;
-          border-radius: 20%;
-          padding: 5px;
-          background: $text;
+    & button {
+      margin-right: 20px;
+    }
+    & a {
+      & img {
+        width: 30px;
+        height: 30px;
+        border-radius: 20%;
+        padding: 5px;
+        background: $text;
+        transition: 0.2s;
+        &:hover {
           transition: 0.2s;
-          &:hover {
-            transition: 0.2s;
-            transform: translate(1px, 0);
-          }
-          &:first-child {
-            margin: 0 3px;
-          }
+          transform: translate(1px, 0);
+        }
+        &:first-child {
+          margin: 0 3px;
         }
       }
     }

@@ -1,16 +1,9 @@
 <template>
   <div class="auth">
     <div class="form-wrapper">
-      <h1 v-if="isLoginRoute">Login</h1>
-      <h1 v-else>Sign Up</h1>
-      <!--<p class="err-message" v-if="isLoginErr">User not found.</p>-->
+      <h1>Login</h1>
+      <p class="err-message" v-if="error">{{ error }}</p>
       <div class="form-wrapper-input">
-        <input
-          v-if="!isLoginRoute"
-          type="text"
-          placeholder="Name"
-          v-model="user.name"
-        />
         <input
           type="email"
           placeholder="Email"
@@ -18,62 +11,39 @@
           v-model="user.email"
         />
         <input type="password" placeholder="Password" v-model="user.password" />
-        <button v-if="isLoginRoute" class="btn btn-orange" @click="login">
-          LOGIN
-        </button>
-        <button v-else class="btn btn-orange" @click="register">SIGN UP</button>
+        <button class="btn btn-orange" @click="login">LOGIN</button>
       </div>
-      <div v-if="isLoginRoute" class="form-wrapper-bottom">
+      <div class="form-wrapper-bottom">
         <h2>Sign Up Using</h2>
         <router-link to="/register" tag="a">SIGN UP</router-link>
-      </div>
-      <div v-else class="form-wrapper-bottom">
-        <h2>Login Using</h2>
-        <router-link to="/login" tag="a">LOGIN</router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
       user: {
-        name: null,
-        email: null,
-        password: null,
+        email: "",
+        password: "",
       },
     };
   },
   computed: {
-    isLoginRoute() {
-      return this.$route.name == "login";
-    },
-    loggedIn() {
-      //  //  return this.$store.state.auth.initialState.status.loggedIn;
-      return this.$store.state.auth.initialState.status.loggedIn;
-    },
-  },
-  mounted() {
-    if (this.loggedIn) {
-      this.$router.push("/");
-    }
+    ...mapGetters(["error"]),
   },
   methods: {
     login() {
-      const userInfos = {
-        email: this.user.email,
-        password: this.user.password,
-      };
-      if (this.user.email && this.user.password) {
-        this.$store
-          .dispatch("login", userInfos)
-          .then(() => this.$router.push("/"));
-      }
-    },
-    register() {
-      this.$store.dispatch("register", this.user);
+      let user = this.user;
+      this.$store
+        .dispatch("login", user)
+        .then(() => this.$router.push("/"))
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
 };
