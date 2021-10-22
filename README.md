@@ -14,8 +14,6 @@
     * [Backend](#backend)
   * [:cool: API Routes](#cool-features)
   * [:clipboard: .env](#clipboard-status--to-do-list)
-  * [:clap: Inspiration](#clap-inspiration)
-  * [:file_folder: License](#file_folder-license)
   * [:envelope: Contact](#envelope-contact)
 
 ## :camera: Screenshots
@@ -59,3 +57,10 @@ JWT_EXPIRE=30m
 JWT_COOKIE=30
 ```
 
+## :envelope: Contact
+
+* Repo created by [Ceren](https://github.com/cerdemrc), email: cerdemrc@gmail.com
+<hr/>
+<p align="center">
+Developed with ❤️
+</p>
