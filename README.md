@@ -1,9 +1,6 @@
 <div align="center">
   
-  <img src="https://media.giphy.com/media/QssGEmpkyEOhBCb7e1/giphy.gif" width="10%">
-  
-  ### :blossom: Mevn - Book Directory
-  
+  <img src="https://media.giphy.com/media/QssGEmpkyEOhBCb7e1/giphy.gif" width="10%"> 
   <p>📢 A book directory application with mevn stack (mongo, express, vue, node) </p>
   <p><strong>Used Techs:</strong> Node Js, Express Js, MongoDb, Vue Js, Vuex, Vue-Router, Axios, SCSS</p>
   
@@ -12,7 +9,6 @@
 </div>
 
 ## :page_facing_up: Table of contents
-  * [:blossom: Mevn - Book Directory](#blossom-bookdirectory)
   * [:camera: Screenshots](#camera-screenshots)
   * [:computer: Technologies](#signal_strength-technologies)
     * [Frontend](#frontend)
