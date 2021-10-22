@@ -13,7 +13,7 @@
   * [:computer: Technologies](#computer-technologies)
     * [Frontend](#frontend)
     * [Backend](#backend)
-  * [:globe_with_meridians: Routes](#globe_with_meridians-routes)
+  * [:globe_with_meridians: API Routes](#globewithmeridians-apiroutes)
   * [:pushpin: .env](#pushpin-env)
   * [:mailbox: Contact](#mailbox-contact)
 
