@@ -10,12 +10,12 @@
 
 ## :page_facing_up: Table of contents
   * [:camera: Screenshots](#camera-screenshots)
-  * [:computer: Technologies](#signal_strength-technologies)
+  * [:computer: Technologies](#computer-technologies)
     * [Frontend](#frontend)
     * [Backend](#backend)
-  * [:globe_with_meridians: API Routes](#cool-features)
-  * [:pushpin: .env](#clipboard-status--to-do-list)
-  * [:mailbox: Contact](#envelope-contact)
+  * [:globe_with_meridians: Routes](#globe_with_meridians-routes)
+  * [:pushpin: .env](#pushpin-env)
+  * [:mailbox: Contact](#mailbox-contact)
 
 ## :camera: Screenshots
 
