@@ -1,26 +1,31 @@
 <div align="center">
+  
   <img src="https://media.giphy.com/media/QssGEmpkyEOhBCb7e1/giphy.gif" width="10%">
+  
+  ### :blossom: Mevn - Book Directory
+  
   <p>📢 A book directory application with mevn stack (mongo, express, vue, node) </p>
   <p><strong>Used Techs:</strong> Node Js, Express Js, MongoDb, Vue Js, Vuex, Vue-Router, Axios, SCSS</p>
+  
+  ![repo size](https://img.shields.io/github/repo-size/cerdemrc/mevn-book-directory?style=plastic)
+  ![last commit](https://img.shields.io/github/last-commit/cerdemrc/mevn-book-directory?style=plastic)
 </div>
 
-![GitHub repo size](https://img.shields.io/github/repo-size/cerdemrc/mevn-book-directory?style=plastic)
-![GitHub last commit](https://img.shields.io/github/last-commit/cerdemrc/mevn-book-directory?style=plastic)
-
 ## :page_facing_up: Table of contents
+  * [:blossom: Mevn - Book Directory](#blossom-bookdirectory)
   * [:camera: Screenshots](#camera-screenshots)
-  * [:signal_strength: Stack](#signal_strength-technologies)
+  * [:computer: Technologies](#signal_strength-technologies)
     * [Frontend](#frontend)
     * [Backend](#backend)
-  * [:cool: API Routes](#cool-features)
-  * [:clipboard: .env](#clipboard-status--to-do-list)
-  * [:envelope: Contact](#envelope-contact)
+  * [:globe_with_meridians: API Routes](#cool-features)
+  * [:pushpin: .env](#clipboard-status--to-do-list)
+  * [:mailbox: Contact](#envelope-contact)
 
 ## :camera: Screenshots
 
 <img src="https://user-images.githubusercontent.com/40372039/138366037-d4ea25cd-c95b-4033-b0a0-aeaf3ed5813c.png">
 
-## :signal_strength: Stack
+## :computer: Technologies
 
 ### Frontend
 - <strong>Vue</strong> - as a Frontend Framework
@@ -34,7 +39,7 @@
 - <strong>JsonWebToken</strong> - for creating JSON-based access tokens
 - <strong>bcryptjs</strong> - for hashing the user passwords
 
-## :cool: API Routes
+## :globe_with_meridians: API Routes
 
 | Method | Endpoint | Authentication | Description |
 | :-------- | :------- | :---------- |:----------- |
@@ -44,7 +49,7 @@
 | POST      | `/api/books` | required  | Add a book to the book directory in DB  |
 | DELETE      | `/api/books/:id` | required |Delete book infos in DB  |
 
-## :clipboard: .env
+## :pushpin: .env
 
 ```
 PORT=5000
@@ -57,7 +62,7 @@ JWT_EXPIRE=30m
 JWT_COOKIE=30
 ```
 
-## :envelope: Contact
+## :mailbox: Contact
 
 * Repo created by [Ceren](https://github.com/cerdemrc), email: cerdemrc@gmail.com
 <hr/>
