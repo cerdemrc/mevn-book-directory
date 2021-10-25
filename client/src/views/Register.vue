@@ -40,31 +40,12 @@ export default {
   methods: {
     register() {
       let user = this.user;
-      this.$store
-        .dispatch("register", user)
-        .then((res) => {
-          if (res.data.success) {
-            this.$router.push("/login");
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      this.$store.dispatch("register", user).then((res) => {
+        if (res.data.success) {
+          this.$router.push("/login");
+        }
+      });
     },
-    //async register() {
-    //  try {
-    //    const res = await AuthenticationService.register({
-    //      name: this.name,
-    //      email: this.email,
-    //      password: this.password,
-    //    });
-    //    this.$store.dispatch("setToken", res.data.access_token);
-    //    this.$store.dispatch("setUser", res.data.data);
-    //    this.$router.push("/");
-    //  } catch (error) {
-    //    this.error = error.response.data.error;
-    //  }
-    //},
   },
 };
 </script>
