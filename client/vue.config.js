@@ -1,4 +1,3 @@
-
 module.exports = {
     css: {
       loaderOptions: {
@@ -10,4 +9,7 @@ module.exports = {
         },
       },
     },
-  };
+    devServer: {
+        proxy: "http://localhost:5000",
+    },
+};
