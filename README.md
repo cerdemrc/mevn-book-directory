@@ -29,7 +29,7 @@
 - <strong>Vuex</strong> - for state management
 - <strong>Axios</strong> - for make HTTP requests
 ### Backend
-- <strong>MongoDb and Mongoose</strong> - MongoDb as a Database and mongoose as as a Object Data Modeling library for MongoDB and Node.js
+- <strong>MongoDb and Mongoose</strong> - MongoDb as a Database and mongoose as a Object Data Modeling library for MongoDB and Node.js
 - <strong>Node</strong> - runtime JavaScript
 - <strong>Express</strong> - as a backend Framework
 - <strong>JsonWebToken</strong> - for creating JSON-based access tokens
@@ -60,7 +60,9 @@ JWT_COOKIE=30
 
 ## :mailbox: Contact
 
-* Repo created by [Ceren](https://github.com/cerdemrc), email: cerdemrc@gmail.com
+* Repo created by [Ceren](https://github.com/cerdemrc)
+* Email: cerdemrc@gmail.com
+
 <hr/>
 <p align="center">
 Developed with ❤️
